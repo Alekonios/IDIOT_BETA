@@ -1,0 +1,10 @@
+res://ASSETS/humans/Z_HUMANS/ZMAN1V.tscn
+res://SHADERS/idiot.gdshader
+res://SCENES/test.tscn
+res://SCENES/main_menu.tscn
+res://ASSETS/STRUCTURES/trashbukket.tscn
+res://SCRIPTS/navarea.gd
+res://SCRIPTS/z_human1.gd
+res://ASSETS/STRUCTURES/street_flashlight.tscn
+res://ASSETS/humans/idiot.tscn
+res://SCRIPTS/idiot.gd
