@@ -58,9 +58,8 @@ shadow_mesh = SubResource("ArrayMesh_l2hh6")
 [sub_resource type="BoxShape3D" id="BoxShape3D_akv2l"]
 size = Vector3(1.36267, 13.8871, 1.62305)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_0h7ip"]
-height = 0.913563
-radius = 1.7808
+[sub_resource type="BoxShape3D" id="BoxShape3D_5yyvy"]
+size = Vector3(3.52979, 3.6582, 3.84778)
 
 [node name="street flashlight" type="StaticBody3D"]
 
@@ -74,5 +73,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0436401, 6.44357, -0.017578
 shape = SubResource("BoxShape3D_akv2l")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0408813, 0.490903, 0.107452)
-shape = SubResource("CylinderShape3D_0h7ip")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0479614, 1.82, 0.271576)
+shape = SubResource("BoxShape3D_5yyvy")

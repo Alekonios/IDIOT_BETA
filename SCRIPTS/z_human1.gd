@@ -4,8 +4,9 @@ const speed = 2.5
 @export var purpose: Node3D
 @onready var new_agent := $NavigationAgent3D  as NavigationAgent3D
 @onready var animations = $AnimationPlayer
-@onready var NavpointS = [$"../../../navigation/nav1", $"../../../navigation/nav2", $"../../../navigation/nav3", $"../../../navigation/nav4", $"../../../navigation/nav5", $"../../../navigation/nav6", $"../../../navigation/nav7", $"../../../navigation/nav8", $"../../../navigation/nav9", $"../../../navigation/nav10", $"../../../navigation/nav11"]
-@onready var coliders = [$Armature/Skeleton3D/BoneAttachment3D/RayCast3D, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D2, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D3, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D4]
+@onready var NavpointS = [$"../../../navigation/nav1", $"../../../navigation/nav2", $"../../../navigation/nav3", $"../../../navigation/nav4", $"../../../navigation/nav5", $"../../../navigation/nav6", $"../../../navigation/nav7", $"../../../navigation/nav8", $"../../../navigation/nav9", $"../../../navigation/nav10", $"../../../navigation/nav11", $"../../../navigation/nav12"]
+@onready var coliders = [$Armature/Skeleton3D/BoneAttachment3D/RayCast3D, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D5, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D6, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D7, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D2, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D3, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D4, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D8, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D9, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D10, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D11, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D12, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D13]
+@onready var shagi_sound = $shagi
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var the_path_is_set = false
@@ -26,8 +27,8 @@ func _physics_process(_delta: float):
 		move_and_slide()
 		if dir:
 			animations.play("walk1")
-			#if play_shagi:
-				#shagi_aud()
+			if play_shagi:
+				shagi_aud()
 	else:
 		animations.play("idle2")
 #}	
@@ -72,10 +73,11 @@ func stop_path():
 	the_path_is_set = false
 
 		
-#func shagi_aud():
-	#play_shagi = false
-	#await get_tree().create_timer(0.6, false).timeout
-	#play_shagi = true
+func shagi_aud():
+	play_shagi = false
+	shagi_sound.play()
+	await get_tree().create_timer(0.7, false).timeout
+	play_shagi = true
 	
 func colide():
 	for colider in coliders:

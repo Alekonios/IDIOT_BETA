@@ -795,6 +795,20 @@ mesh = SubResource("BoxMesh_1lwbn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.418839, 4.24878, 0.429932)
 shape = SubResource("BoxShape3D_b7fls")
 
+[node name="nav12" type="Node3D" parent="navigation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.36, 0, -171.092)
+script = ExtResource("12_5k7um")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="navigation/nav12"]
+transform = Transform3D(2.50194, 0, 0, 0, 212.49, 0, 0, 0, 2.52535, 0, 56.7716, 0)
+mesh = SubResource("BoxMesh_1lwbn")
+
+[node name="Area3D" type="Area3D" parent="navigation/nav12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="navigation/nav12/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.418839, 4.24878, 0.429932)
+shape = SubResource("BoxShape3D_b7fls")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="navigation"]
 navigation_mesh = SubResource("NavigationMesh_34m6c")
 
@@ -1209,6 +1223,7 @@ environment = SubResource("Environment_aj40b")
 [connection signal="body_entered" from="navigation/nav9/Area3D" to="navigation/nav9" method="on_nav_point_body_entered"]
 [connection signal="body_entered" from="navigation/nav10/Area3D" to="navigation/nav10" method="on_nav_point_body_entered"]
 [connection signal="body_entered" from="navigation/nav11/Area3D" to="navigation/nav11" method="on_nav_point_body_entered"]
+[connection signal="body_entered" from="navigation/nav12/Area3D" to="navigation/nav12" method="on_nav_point_body_entered"]
 
 [editable path="objects/others/luke"]
 [editable path="charapters/Z_humans/z_human1"]

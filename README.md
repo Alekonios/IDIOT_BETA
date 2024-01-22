@@ -1,2 +1,2 @@
-# IDIOT_BETA
- beta_version_seq_studio
+# IDIOT_git_
+ new_rep
