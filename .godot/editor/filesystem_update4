@@ -1,8 +1,0 @@
-res://SCENES/test.tscn
-res://SHADERS/idiot.gdshader
-res://SCENES/main_menu.tscn
-res://ASSETS/STRUCTURES/trashbukket.tscn
-res://ASSETS/humans/Z_HUMANS/ZMAN1V.tscn
-res://ASSETS/STRUCTURES/street_flashlight.tscn
-res://ASSETS/humans/idiot.tscn
-res://SCRIPTS/z_human1.gd
