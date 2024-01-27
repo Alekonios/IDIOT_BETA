@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvpvwq7xn5njd"]
+
+[ext_resource type="Texture2D" uid="uid://c3mdpuey3xk5f" path="res://ASSETS_GLB/luke-0.png" id="1_ccald"]
+[ext_resource type="ArrayMesh" uid="uid://057gn0p87on2" path="res://ASSETS_GLB/luke-1.obj" id="2_q73bn"]
+[ext_resource type="ArrayMesh" uid="uid://cy3n517e5tu5s" path="res://ASSETS_GLB/luke-0.obj" id="3_14xom"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htr6d"]
+albedo_texture = ExtResource("1_ccald")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qf3fa"]
+albedo_texture = ExtResource("1_ccald")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_46q1m"]
+height = 0.861727
+radius = 4.82638
+
+[node name="luke" type="StaticBody3D"]
+
+[node name="Luke-1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.570812, -1.69053)
+material_override = SubResource("StandardMaterial3D_htr6d")
+mesh = ExtResource("2_q73bn")
+
+[node name="Luke-0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0795774, 0.576701, -1.68387)
+material_override = SubResource("StandardMaterial3D_qf3fa")
+mesh = ExtResource("3_14xom")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.619526, 0)
+shape = SubResource("CylinderShape3D_46q1m")
