@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=3 uid="uid://bflnuei8vg2pe"]
+
+[ext_resource type="PackedScene" uid="uid://bvx5rju5w57dv" path="res://ASSETS/STRUCTURES/street_flashlight.tscn" id="1_bcxy8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7n88"]
+albedo_color = Color(1, 1, 0.694118, 1)
+rim_enabled = true
+rim = 0.02
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gkeyy"]
+
+[sub_resource type="Animation" id="Animation_jurh6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.081]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D2:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.081]
+}
+
+[sub_resource type="Animation" id="Animation_6rlwd"]
+resource_name = "light_morg"
+length = 10.0
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8.2, 8.26, 8.32, 8.38, 8.44, 8.5, 8.56, 8.62, 9.58, 9.64, 9.72, 9.78, 9.84, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 16.0, 3.084, 16.0, 3.084, 16.0, 3.084, 3.084, 16.0, 16.0, 3.084, 16.0, 3.084, 3.084, 16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8.2, 8.26, 8.32, 8.38, 8.44, 8.5, 8.56, 8.62, 9.58, 9.64, 9.72, 9.78, 9.84, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [9.081, 9.081, 0.0, 9.081, 0.0, 9.081, 0.0, 0.0, 9.081, 9.081, 0.0, 9.081, 0.0, 0.0, 9.081]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D2:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8.2, 8.26, 8.32, 8.38, 8.44, 8.5, 8.56, 8.62, 9.58, 9.64, 9.72, 9.78, 9.84, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [9.081, 9.081, 0.0, 9.081, 0.0, 9.081, 0.0, 0.0, 9.081, 9.081, 0.0, 9.081, 0.0, 0.0, 9.081]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xsp3m"]
+_data = {
+"RESET": SubResource("Animation_jurh6"),
+"light_morg": SubResource("Animation_6rlwd")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvudo"]
+size = Vector3(6.00027, 53.5676, 6.31104)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yx4vh"]
+height = 0.645636
+radius = 6.57784
+
+[node name="break_flash_light" type="StaticBody3D"]
+
+[node name="street flashlight2" parent="." instance=ExtResource("1_bcxy8")]
+transform = Transform3D(3.95793, 0, 0, 0, 3.95793, 0, 0, 0, 3.95793, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="street flashlight2"]
+transform = Transform3D(1.18576, -0.275805, -0.0434121, 0.0653386, 0.0899642, 1.2131, -0.271448, -1.18314, 0.102362, -0.024549, 9.58237, -1.90985)
+light_color = Color(1, 1, 0.8, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_specular = 0.662
+shadow_enabled = true
+spot_range = 19.5889
+spot_angle = 31.7997
+
+[node name="OmniLight3D" type="OmniLight3D" parent="street flashlight2"]
+transform = Transform3D(1.06954, 0, 1.49012e-08, 0, 1.06954, 0, -1.49012e-08, 0, 1.06954, 0.127611, 10.4059, -1.85194)
+light_color = Color(1, 1, 0.776471, 1)
+light_energy = 9.081
+omni_range = 6.68409
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="street flashlight2"]
+transform = Transform3D(1.06954, 0, 1.49012e-08, 0, 1.06954, 0, -1.49012e-08, 0, 1.06954, 0.127609, 10.4059, -1.85194)
+light_color = Color(1, 1, 0.776471, 1)
+light_energy = 9.081
+omni_range = 6.68409
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="street flashlight2"]
+transform = Transform3D(0.330676, 0, 1.86265e-07, 0, 0.373323, 0, -1.78814e-07, 0, 0.376429, 0.0124187, 10.4108, -1.76028)
+material_override = SubResource("StandardMaterial3D_k7n88")
+mesh = SubResource("CapsuleMesh_gkeyy")
+
+[node name="break_light" type="AnimationPlayer" parent="street flashlight2"]
+libraries = {
+"": SubResource("AnimationLibrary_xsp3m")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0579586, 26.2838, -0.0734867)
+shape = SubResource("BoxShape3D_bvudo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0479614, -0.120441, 0.0737329)
+shape = SubResource("CylinderShape3D_yx4vh")
