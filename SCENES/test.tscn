@@ -720,7 +720,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.418839, 4.24878, 0.429932)
 shape = SubResource("BoxShape3D_b7fls")
 
 [node name="nav11" type="Node3D" parent="navigation"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.2165, 0, -47.1887)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4912, 0, -73.7272)
 script = ExtResource("12_5k7um")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="navigation/nav11"]
@@ -775,7 +775,7 @@ shape = SubResource("BoxShape3D_y0r4b")
 [node name="charapters" type="Node3D" parent="."]
 
 [node name="idiot" parent="charapters" instance=ExtResource("1_dofng")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.9445, 4.79722, -170.768)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1759, -0.24057, -174.862)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="charapters/idiot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8045, 43.0402, 170.793)
@@ -788,8 +788,10 @@ draw_pass_1 = SubResource("BoxMesh_bf5ov")
 
 [node name="Z_humans" type="Node3D" parent="charapters"]
 
-[node name="z_human1" parent="charapters/Z_humans" instance=ExtResource("13_6g4ci")]
+[node name="z_human1" parent="charapters/Z_humans" node_paths=PackedStringArray("navpoint_player", "NavpointS") instance=ExtResource("13_6g4ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8853, -0.300782, -74.1012)
+navpoint_player = NodePath("../../../navigation/navpoint_player")
+NavpointS = [NodePath("../../../navigation/nav1"), NodePath("../../../navigation/nav2"), NodePath("../../../navigation/nav4"), NodePath("../../../navigation/nav5"), NodePath("../../../navigation/nav6"), NodePath("../../../navigation/nav7"), NodePath("../../../navigation/nav8"), NodePath("../../../navigation/nav9"), NodePath("../../../navigation/nav10"), NodePath("../../../navigation/nav11"), NodePath("../../../navigation/nav12")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="charapters/Z_humans/z_human1/Armature/Skeleton3D/BoneAttachment3D" index="1"]
 transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, -66.2488, -104.694, 81.8833)
@@ -842,345 +844,22 @@ light_volumetric_fog_energy = 16.0
 spot_range = 14.0478
 spot_angle = 4.86342
 
-[node name="z_human2" parent="charapters/Z_humans" instance=ExtResource("13_6g4ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.034, -0.300782, -86.0585)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="charapters/Z_humans/z_human2/Armature/Skeleton3D/BoneAttachment3D" index="1"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, -66.2488, -104.694, 81.8833)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0717242
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="charapters/Z_humans/z_human2/Armature/Skeleton3D/BoneAttachment3D" index="2"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -116.709, 112.017)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0467518
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="charapters/Z_humans/z_human2/Armature/Skeleton3D/BoneAttachment3D" index="3"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -55.6224, 102.662)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0389758
-
-[node name="SpotLight3D" type="SpotLight3D" parent="charapters/Z_humans/z_human2/Armature/Skeleton3D/BoneAttachment3D" index="4"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="charapters/Z_humans/z_human2/Armature/Skeleton3D/BoneAttachment3D" index="5"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="charapters/Z_humans/z_human2/Armature/Skeleton3D/BoneAttachment3D" index="6"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="z_human3" parent="charapters/Z_humans" instance=ExtResource("13_6g4ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.0181, -0.300782, 19.8298)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="charapters/Z_humans/z_human3/Armature/Skeleton3D/BoneAttachment3D" index="1"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, -66.2488, -104.694, 81.8833)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0717242
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="charapters/Z_humans/z_human3/Armature/Skeleton3D/BoneAttachment3D" index="2"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -116.709, 112.017)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0467518
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="charapters/Z_humans/z_human3/Armature/Skeleton3D/BoneAttachment3D" index="3"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -55.6224, 102.662)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0389758
-
-[node name="SpotLight3D" type="SpotLight3D" parent="charapters/Z_humans/z_human3/Armature/Skeleton3D/BoneAttachment3D" index="4"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="charapters/Z_humans/z_human3/Armature/Skeleton3D/BoneAttachment3D" index="5"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="charapters/Z_humans/z_human3/Armature/Skeleton3D/BoneAttachment3D" index="6"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="z_human4" parent="charapters/Z_humans" instance=ExtResource("13_6g4ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5861, -0.300782, -43.5696)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="charapters/Z_humans/z_human4/Armature/Skeleton3D/BoneAttachment3D" index="1"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, -66.2488, -104.694, 81.8833)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0717242
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="charapters/Z_humans/z_human4/Armature/Skeleton3D/BoneAttachment3D" index="2"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -116.709, 112.017)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0467518
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="charapters/Z_humans/z_human4/Armature/Skeleton3D/BoneAttachment3D" index="3"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -55.6224, 102.662)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0389758
-
-[node name="SpotLight3D" type="SpotLight3D" parent="charapters/Z_humans/z_human4/Armature/Skeleton3D/BoneAttachment3D" index="4"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="charapters/Z_humans/z_human4/Armature/Skeleton3D/BoneAttachment3D" index="5"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="charapters/Z_humans/z_human4/Armature/Skeleton3D/BoneAttachment3D" index="6"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="z_human5" parent="charapters/Z_humans" instance=ExtResource("13_6g4ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.371, -0.300782, -115.237)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="charapters/Z_humans/z_human5/Armature/Skeleton3D/BoneAttachment3D" index="1"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, -66.2488, -104.694, 81.8833)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0717242
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="charapters/Z_humans/z_human5/Armature/Skeleton3D/BoneAttachment3D" index="2"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -116.709, 112.017)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0467518
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="charapters/Z_humans/z_human5/Armature/Skeleton3D/BoneAttachment3D" index="3"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -55.6224, 102.662)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0389758
-
-[node name="SpotLight3D" type="SpotLight3D" parent="charapters/Z_humans/z_human5/Armature/Skeleton3D/BoneAttachment3D" index="4"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="charapters/Z_humans/z_human5/Armature/Skeleton3D/BoneAttachment3D" index="5"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="charapters/Z_humans/z_human5/Armature/Skeleton3D/BoneAttachment3D" index="6"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 14.0478
-spot_angle = 4.86342
-
-[node name="z_human6" parent="charapters/Z_humans" instance=ExtResource("13_6g4ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.536, -0.300782, 26.8194)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="charapters/Z_humans/z_human6/Armature/Skeleton3D/BoneAttachment3D" index="1"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, -66.2488, -104.694, 81.8833)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0717242
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="charapters/Z_humans/z_human6/Armature/Skeleton3D/BoneAttachment3D" index="2"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -116.709, 112.017)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0467518
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="charapters/Z_humans/z_human6/Armature/Skeleton3D/BoneAttachment3D" index="3"]
-transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, 74.6584, -55.6224, 102.662)
-light_color = Color(0.913725, 0.635294, 0, 1)
-light_energy = 2.506
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-omni_range = 0.0389758
-
-[node name="SpotLight3D" type="SpotLight3D" parent="charapters/Z_humans/z_human6/Armature/Skeleton3D/BoneAttachment3D" index="4"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 24.2464
-spot_angle = 4.18338
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="charapters/Z_humans/z_human6/Armature/Skeleton3D/BoneAttachment3D" index="5"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 25.6528
-spot_angle = 4.86342
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="charapters/Z_humans/z_human6/Armature/Skeleton3D/BoneAttachment3D" index="6"]
-transform = Transform3D(423.318, 3.70097e-05, -3.70078e-05, 3.70076e-05, -423.318, -4.36557e-11, -3.70076e-05, 2.91038e-11, -423.318, -70.7556, -109.514, 107.034)
-light_color = Color(0.901961, 0.788235, 0, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 16.0
-spot_range = 29.9336
-spot_angle = 4.86342
-
 [node name="ROBOTS" type="Node3D" parent="charapters"]
 
-[node name="hunter" parent="charapters/ROBOTS" node_paths=PackedStringArray("purpose") instance=ExtResource("20_0162m")]
-transform = Transform3D(0.992899, 0, 0.118959, 0, 1, 0, -0.118959, 0, 0.992899, 78.8528, -0.300781, 94.8775)
+[node name="hunter" parent="charapters/ROBOTS" node_paths=PackedStringArray("purpose", "Navpoint", "ramka_nav_point") instance=ExtResource("20_0162m")]
+transform = Transform3D(0.992899, 0, 0.118959, 0, 1, 0, -0.118959, 0, 0.992899, 79.0879, -0.300781, 66.7672)
 purpose = NodePath("../../../navigation/nav_the_other_ramka")
-
-[node name="Skeleton3D" parent="charapters/ROBOTS/hunter/Armature" index="0"]
-bones/0/position = Vector3(0.00220045, -23.2662, -685.279)
-bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/position = Vector3(0, 146.599, 8.26183)
-bones/1/rotation = Quaternion(0.0281448, 0, 0, 0.999604)
-bones/2/position = Vector3(-2.59526e-11, 171.303, -2.86102e-06)
-bones/2/rotation = Quaternion(1.86265e-09, 0, 0, 1)
-bones/3/position = Vector3(0, 195.776, -3.8147e-06)
-bones/3/rotation = Quaternion(-5.58794e-09, 0, 0, 1)
-bones/4/position = Vector3(0, 220.247, 1.71661e-05)
-bones/4/rotation = Quaternion(-0.0281448, 0, 0, 0.999604)
-bones/5/position = Vector3(0, 203.456, -28.4258)
-bones/5/rotation = Quaternion(-1.77636e-15, 0, 0, 1)
-bones/7/rotation = Quaternion(-0.555334, -0.432462, 0.574335, -0.417994)
-bones/8/position = Vector3(1.41181e-05, 250.5, -0.00013757)
-bones/8/rotation = Quaternion(-0.139307, -0.014191, 0.0190528, 0.989964)
-bones/9/position = Vector3(2.53727e-06, 242.479, 6.1852e-05)
-bones/9/rotation = Quaternion(-5.11407e-07, 0.000743793, 1.48039e-07, 1)
-bones/10/position = Vector3(-3.06632e-05, 364.295, -0.000101035)
-bones/10/rotation = Quaternion(3.90367e-07, 0.948608, 1.19209e-07, -0.316453)
-bones/11/position = Vector3(0.000110406, 104.435, -6.45677e-05)
-bones/11/rotation = Quaternion(6.57122e-07, 0.999943, -2.08616e-07, -0.0106747)
-bones/12/position = Vector3(7.32777e-05, 35.2054, -2.63474e-05)
-bones/12/rotation = Quaternion(-0.00713093, -5.387e-08, -0.0132797, 0.999886)
-bones/13/position = Vector3(-1.5227, 57.3095, 0.817585)
-bones/13/rotation = Quaternion(-0.0635251, -0.00187113, 0.0128495, 0.997896)
-bones/14/position = Vector3(-0.0306814, 46.8394, 6.66897)
-bones/15/rotation = Quaternion(0.582601, -0.412327, 0.544118, 0.441018)
-bones/16/position = Vector3(-1.02203e-05, 250.522, -0.000182859)
-bones/16/rotation = Quaternion(-0.136052, -0.0132102, 0.0360808, 0.989956)
-bones/17/position = Vector3(1.09069e-05, 242.127, -7.75242e-05)
-bones/17/rotation = Quaternion(-6.22646e-07, 0.000722929, 3.96834e-07, 1)
-bones/18/position = Vector3(-6.67018e-06, 364.264, -0.000144503)
-bones/18/rotation = Quaternion(-1.32326e-08, 0.996821, -2.98023e-08, -0.0796748)
-bones/19/position = Vector3(5.56846e-06, 99.0103, -0.000248131)
-bones/19/rotation = Quaternion(-1.2539e-07, 0.999943, 7.15256e-07, 0.0107165)
-bones/20/position = Vector3(-4.33187e-06, 33.7987, 0.000136079)
-bones/20/rotation = Quaternion(0.00590907, 1.34309e-07, 0.00159829, 0.999981)
-bones/21/position = Vector3(0.163072, 51.0303, -0.60301)
-bones/21/rotation = Quaternion(0.0162615, 0.000352255, 0.0342081, 0.999282)
-bones/22/position = Vector3(2.97369, 41.4093, -1.84029)
-bones/23/rotation = Quaternion(-0.000233243, 0.0992789, 0.995055, 0.00312282)
-bones/24/position = Vector3(1.38321e-05, 344.545, 2.83941e-07)
-bones/24/rotation = Quaternion(-0.302407, -0.00132424, 0.00865676, 0.953139)
-bones/25/position = Vector3(-5.76906e-05, 205.422, 1.21382e-05)
-bones/25/rotation = Quaternion(0.609601, 0.0159066, -0.00256662, 0.792545)
-bones/26/position = Vector3(3.86059e-05, 124.944, -1.92445e-05)
-bones/26/rotation = Quaternion(0.333927, -0.0222579, 0.00788785, 0.942303)
-bones/27/position = Vector3(1.87755e-05, 47.9266, -5.96046e-07)
-bones/28/rotation = Quaternion(0.000245171, 0.0992752, 0.995055, -0.00309345)
-bones/29/position = Vector3(-3.97118e-05, 344.547, 2.23757e-06)
-bones/29/rotation = Quaternion(-0.302702, 0.00131073, -0.00857604, 0.953046)
-bones/30/position = Vector3(1.74477e-05, 205.477, 8.01077e-06)
-bones/30/rotation = Quaternion(0.604907, -0.0167775, 0.0021617, 0.796117)
-bones/31/position = Vector3(5.78588e-05, 123.042, 2.16879e-05)
-bones/31/rotation = Quaternion(0.339713, 0.0230801, -0.00833933, 0.940209)
-bones/32/position = Vector3(-2.12356e-05, 49.1787, 5.06639e-07)
+Navpoint = NodePath("../../../navigation/navpoint_player")
+ramka_nav_point = NodePath("../../../navigation/nav_the_other_ramka")
 
 [node name="left_arm" parent="charapters/ROBOTS/hunter/Armature/Skeleton3D" index="1"]
 transform = Transform3D(-5.61533e-07, -1, 5.39443e-06, -0.997683, 1.79556e-07, -0.0680377, 0.0680377, -5.27706e-06, -0.997683, -967.12, 36.763, -1313.73)
 
+[node name="gun" parent="charapters/ROBOTS/hunter/Armature/Skeleton3D/left_arm" index="0"]
+transform = Transform3D(17.5377, -57.0255, 42.4058, -34.0724, 31.583, 56.5625, -62.3639, -33.2917, -18.9777, 253.102, 111.136, -155.5)
+
 [node name="head" parent="charapters/ROBOTS/hunter/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -7.45059e-09, 1, 0, -1, -7.45059e-09, 0.00220522, -62.4853, -1994.65)
+transform = Transform3D(1, 0, 0, 0, -7.45059e-09, 1, 0, -1, -7.45059e-09, 0.00220045, -62.4853, -1994.65)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="charapters/ROBOTS/hunter/Armature/Skeleton3D/head" index="21"]
 transform = Transform3D(423.318, -5.94014e-12, 1.90735e-05, 5.88329e-12, 423.318, -2.04636e-11, -1.52588e-05, 1.93268e-11, 423.318, -110.143, -228.403, 206.021)
@@ -1202,6 +881,8 @@ light_color = Color(0.184314, 0.462745, 0, 1)
 light_energy = 11.828
 light_volumetric_fog_energy = 16.0
 omni_range = 0.1
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="charapters/ROBOTS/hunter"]
 
 [node name="audio" type="Node3D" parent="."]
 
@@ -1256,10 +937,6 @@ autostart = true
 [editable path="objects/flashlight/break_flash_light"]
 [editable path="objects/others/luke"]
 [editable path="charapters/idiot"]
+[editable path="charapters/idiot/Armature/Skeleton3D/right_hand/weapons/AXE"]
 [editable path="charapters/Z_humans/z_human1"]
-[editable path="charapters/Z_humans/z_human2"]
-[editable path="charapters/Z_humans/z_human3"]
-[editable path="charapters/Z_humans/z_human4"]
-[editable path="charapters/Z_humans/z_human5"]
-[editable path="charapters/Z_humans/z_human6"]
 [editable path="charapters/ROBOTS/hunter"]

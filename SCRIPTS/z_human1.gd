@@ -6,12 +6,12 @@ const speed = 2.5
 @onready var animations = $AnimationPlayer
 @onready var shagi_sound = $shagi
 @onready var znak = $znak
-@onready var navpoint_player = $"../../../navigation/navpoint_player"
+@export var navpoint_player := Node3D
 @onready var collision = $CollisionShape3D
 @onready var died_sound = $Armature/Skeleton3D/BoneAttachment3D/died_sound
 
 @onready var sounds = [$Armature/Skeleton3D/BoneAttachment3D/gde, $Armature/Skeleton3D/BoneAttachment3D/ill, $Armature/Skeleton3D/BoneAttachment3D/uaa]
-@onready var NavpointS = [$"../../../navigation/nav1", $"../../../navigation/nav2", $"../../../navigation/nav4", $"../../../navigation/nav5", $"../../../navigation/nav6", $"../../../navigation/nav7", $"../../../navigation/nav8", $"../../../navigation/nav9", $"../../../navigation/nav10", $"../../../navigation/nav11", $"../../../navigation/nav12"]
+@export var NavpointS : Array[Node3D] = []
 @onready var coliders = [$Armature/Skeleton3D/BoneAttachment3D/RayCast3D, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D5, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D6, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D8, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D9, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D10, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D11, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D12, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D13, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D7, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D2, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D3, $Armature/Skeleton3D/BoneAttachment3D/RayCast3D4]
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -23,8 +23,9 @@ var died_anim = false
 
 var sec_bot = null
 var target = null
+var impulse = false
 
-
+var push_force = 200
 
 func _ready():
 	random_sound()
@@ -136,4 +137,5 @@ func random_sound():
 		random_sound()
 
 
-
+		
+		

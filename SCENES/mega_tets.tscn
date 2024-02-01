@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://pv1akq5y2gpv"]
+
+[ext_resource type="PackedScene" uid="uid://u4i4e0rpca8w" path="res://ASSETS/robots/SECURITY.tscn" id="1_u82ar"]
+[ext_resource type="PackedScene" uid="uid://cagyco0syngld" path="res://ASSETS/humans/idiot.tscn" id="2_c6viy"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ileb8"]
+vertices = PackedVector3Array(-133.81, 2.51, -142.044, -133.81, 2.51, 141.956, 133.69, 2.51, 141.956, 133.69, 2.51, -142.044)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ksjn1"]
+albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j83v8"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n5i5d"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="hunter" parent="." node_paths=PackedStringArray("purpose") instance=ExtResource("1_u82ar")]
+transform = Transform3D(0.236, 0, 0, 0, 0.236, 0, 0, 0, 0.236, 36.8327, 2.85193, 95.5401)
+purpose = NodePath("../idiot")
+
+[node name="idiot" parent="." instance=ExtResource("2_c6viy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.9782, 2.26025, -61.4813)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ileb8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(268.619, 0, 0, 0, 4.48, 0, 0, 0, 285.087, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ksjn1")
+mesh = SubResource("BoxMesh_j83v8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n5i5d")

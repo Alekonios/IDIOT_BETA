@@ -1,17 +1,19 @@
 extends CharacterBody3D
 const speed = 2.5
 
-@export var purpose: Node3D
+
 @onready var new_agent := $NavigationAgent3D as NavigationAgent3D
 @onready var animations = $AnimationPlayer
 @onready var animations2 = $orig_anim
 @onready var coliders = [$Armature/Skeleton3D/head/RayCast3D, $Armature/Skeleton3D/head/RayCast3D2, $Armature/Skeleton3D/head/RayCast3D3, $Armature/Skeleton3D/head/RayCast3D4, $Armature/Skeleton3D/head/RayCast3D5, $Armature/Skeleton3D/head/RayCast3D6, $Armature/Skeleton3D/head/RayCast3D22, $Armature/Skeleton3D/head/RayCast3D23, $Armature/Skeleton3D/head/RayCast3D24, $Armature/Skeleton3D/head/RayCast3D7, $Armature/Skeleton3D/head/RayCast3D8, $Armature/Skeleton3D/head/RayCast3D9, $Armature/Skeleton3D/head/RayCast3D25, $Armature/Skeleton3D/head/RayCast3D26, $Armature/Skeleton3D/head/RayCast3D27, $Armature/Skeleton3D/head/RayCast3D10, $Armature/Skeleton3D/head/RayCast3D11, $Armature/Skeleton3D/head/RayCast3D12, $Armature/Skeleton3D/head/RayCast3D13, $Armature/Skeleton3D/head/RayCast3D14, $Armature/Skeleton3D/head/RayCast3D15, $Armature/Skeleton3D/head/RayCast3D16, $Armature/Skeleton3D/head/RayCast3D17, $Armature/Skeleton3D/head/RayCast3D18, $Armature/Skeleton3D/head/RayCast3D19, $Armature/Skeleton3D/head/RayCast3D20, $Armature/Skeleton3D/head/RayCast3D21]
 @onready var shagi_sound = $shagi
-@onready var Navpoint = $"../../../navigation/navpoint_player"
 @onready var shoot_colider =  $RayCast3D
 @onready var bullets_nodes = [$bullets_nodes/bullet_node, $bullets_nodes/bullet_node2, $bullets_nodes/bullet_node3, $bullets_nodes/bullet_node4, $bullets_nodes/bullet_node5]
 @onready var sound_blast_shoot = $blast_shoot
-@onready var ramka_nav_point = $"../../../navigation/nav_the_other_ramka"
+
+@export var purpose: Node3D
+@export var Navpoint := Node3D
+@export var ramka_nav_point := Node3D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var bullet_load_scene = preload("res://ASSETS/weapons/bullet.tscn")
@@ -27,7 +29,7 @@ var health = 100
 
 
 var target = null
-	
+
 #передвижение и цикличные процессы {
 func _physics_process(_delta: float):
 	if the_path_is_set:

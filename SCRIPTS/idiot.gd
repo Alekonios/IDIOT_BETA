@@ -19,6 +19,12 @@ extends CharacterBody3D
 @onready var cam_anim = $camorigin/camera_anim
 @onready var died_sound = $SOUNDS/died
 @onready var screen_anim = $"2D/RedVignette/AnimationPlayer"
+@onready var axe = $Armature/Skeleton3D/right_hand/weapons/AXE
+@onready var axe_on_back = $Armature/Skeleton3D/spina/AXE2
+@onready var air = null
+@onready var weapons = []
+@onready var attack_particles = $Armature/Skeleton3D/right_hand/weapons/AXE/model/GPUParticles3D
+@onready var cam_orig_pos_for_attack = $Armature/Skeleton3D/right_hand/weapons/AXE/model/GPUParticles3D
 
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -30,6 +36,7 @@ var sens = 0.08
 var health = 100
 
 
+
 var cycle_shake = false
 var going = false
 var sit = false
@@ -38,6 +45,15 @@ var noticed = false
 var died = false
 var died_anim = false
 var damageing = false
+var axe_unlocked = false
+var slot1 = false
+var slot2 = false
+var slot3 = false
+var axe_in_hand = false
+var air_in_hand = true
+var attacking = false
+var next_attack = false
+var three_next_attack = false
 
 func _ready():
 	died_shape.disabled = true
@@ -45,18 +61,19 @@ func _ready():
 	
 	
 func _physics_process(delta):
+	if attacking:
+		attack_interpalation()
 	if died:
 		died_interpalation()
 	shake_on_direction()
 	# гравитация{
-	if not is_on_floor():
+	if not is_on_floor() and !died and !attacking:
 		velocity.y -= gravity * delta * 2
-		if !died:
-			animations.play("my/jump")
+		animations.play("my/jump")
 	#}
 	#функции нажатия кнопок{
 	#прыжок
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !died:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !died and !attacking:
 		velocity.y = JUMP_VELOCITY
 		
 	#ускорение
@@ -68,7 +85,7 @@ func _physics_process(delta):
 		SPEED = 5.0
 		
 	#присед
-	if Input.is_action_pressed("shift") and !boost and !died:
+	if Input.is_action_pressed("shift") and !boost and !died and !attacking:
 		sit = true
 	else:
 		sit = false
@@ -80,7 +97,7 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	#что будет когда начато передвмжение
-	if direction and !died:
+	if direction and !died and !attacking:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		if !sit:
@@ -99,9 +116,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		if !sit and !died:
+		if !sit and !died and !attacking:
 			animations.play("my/idle")
-		if sit and !died:
+		if sit and !died and !attacking:
 			SPEED = 4.0
 			animations.play("my/sit")
 			await get_tree().create_timer(0.2, false).timeout
@@ -116,14 +133,7 @@ func _physics_process(delta):
 		normal_shape.disabled = false
 		sit_shape.disabled = true
 #}
-#функции мышки{
-func _input(event):
-	if event is InputEventMouseMotion and !died:
-		rotate_y(deg_to_rad(-event.relative.x * sens))
-		camorigin.rotate_x(deg_to_rad(event.relative.y * sens))
-		camorigin.rotation.x = clamp(camorigin.rotation.x, deg_to_rad(-20), deg_to_rad(30))
-#}
-		
+
 #тряска экрана при движении{
 func shake_on_direction():
 	if going and !died:
@@ -199,15 +209,20 @@ func interpalation_direction():
 		springarm.global_position.z = lerp(springarm.global_position.z, cam_orig_pos_for_dir.global_position.z, 0.1)  # Здесь 0.1 - коэффициент интерполяци
 	
 func died_interpalation():
-	springarm.global_position.x = lerp(springarm.global_position.x, cam_died_pos.global_position.x, 0.2)  # Здесь 0.1 - коэффициент интерполяции
-	springarm.global_position.y = lerp(springarm.global_position.y, cam_died_pos.global_position.y, 0.2)  # Здесь 0.1 - коэффициент интерполяции
-	springarm.global_position.z = lerp(springarm.global_position.z, cam_died_pos.global_position.z, 0.2)  # Здесь 0.1 - коэффициент интерполяции
-#}
-
+	springarm.global_position.x = lerp(springarm.global_position.x, cam_died_pos.global_position.x, 0.1)  # Здесь 0.1 - коэффициент интерполяции
+	springarm.global_position.y = lerp(springarm.global_position.y, cam_died_pos.global_position.y, 0.1)  # Здесь 0.1 - коэффициент интерполяции
+	springarm.global_position.z = lerp(springarm.global_position.z, cam_died_pos.global_position.z, 0.1)  # Здесь 0.1 - коэффициент интерполяции
+	
+func attack_interpalation():
+	if !died:
+		springarm.global_position.y = lerp(springarm.global_position.y, cam_orig_pos_for_attack.global_position.y, 0.02)  # Здесь 0.1 - коэффициент интерполяции
+		springarm.global_position.x = lerp(springarm.global_position.x, cam_orig_pos_for_attack.global_position.x, 0.02)  # Здесь 0.1 - коэффициент интерполяции
+		springarm.global_position.z = lerp(springarm.global_position.z, cam_orig_pos_for_attack.global_position.z, 0.02)  # Здесь 0.1 - коэффициент интерполяци
 #damage amd attack system and died {
+#damage{
 func damaging_def_blaster():
 	health -= 30
-	cam_anim.play("camera_shake")
+	camera_shake_func()
 	if health <= 0:
 		health = 0
 	damageing = true
@@ -239,4 +254,133 @@ func died_anim_func():
 			animations.play("my/dyeing")
 			died_sound.play()
 			died_anim = true
+#}
+#функции нажатия
+func _input(event):
+	if event is InputEventMouseMotion and !died:
+		rotate_y(deg_to_rad(-event.relative.x * sens))
+		camorigin.rotate_x(deg_to_rad(event.relative.y * sens))
+		camorigin.rotation.x = clamp(camorigin.rotation.x, deg_to_rad(-20), deg_to_rad(30))
+	if Input.is_action_just_pressed("AXE"):
+		axe_unlocked = true
+	if Input.is_action_just_pressed("num_1"):
+		slot1 = true
+		slot2 = false
+		slot3 = false
+		weapon_swap_func()
+	if Input.is_action_just_pressed("num_2"):
+		slot1 = false
+		slot2 = true
+		slot3 = false
+		weapon_swap_func()
+	if Input.is_action_just_pressed("num_3"):
+		slot1 = false
+		slot2 = false
+		slot3 = true
+		weapon_swap_func()
+	if Input.is_action_just_pressed("LC"):
+		attack()
+#}
+#add_new_weapon{
+func add_new_weapon_func():
+	if axe_unlocked:
+		if air or axe not in weapons:
+			air_add_func()
+			axe_add_func()
+			
+func air_add_func():
+	weapons.append(air)
+			
+func axe_add_func():
+	weapons.append(axe)
+	axe.show()
+
+func weapon_swap_func():
+	if weapons.size() >= 2:
+		if slot1:
+			axe_on_back.show()
+			axe.hide()
+			air_in_hand = true
+		if slot2:
+			axe_on_back.hide()
+			axe.show()
+			axe_in_hand = true
+func _on_weapons_update_timer_timeout():
+	add_new_weapon_func()
+	print(weapons)
+	
+func attack():
+	if axe_in_hand and !attacking and !next_attack and !three_next_attack:
+		next_attack = true
+		attacking = true
+		animations.speed_scale = 1.2
+		animations.play("my/axe_attack1")
+		await get_tree().create_timer(1.4, false).timeout
+		animations.speed_scale = 1
+		attacking = false
+		await get_tree().create_timer(0.5, false).timeout
+		next_attack = false
+		
+		
+	if next_attack and !attacking:
+		attacking = true
+		animations.speed_scale = 1.2
+		two_axe_anim()
+		await get_tree().create_timer(1.7, false).timeout
+		animations.speed_scale = 1
+		attacking = false
+		three_next_attack = true
+		await get_tree().create_timer(1, false).timeout
+		three_next_attack = false
+		
+		
+	if three_next_attack and !attacking:
+		attacking = true
+		animations.speed_scale = 1.2
+		three_axe_anim()
+		await get_tree().create_timer(1.7, false).timeout
+		animations.speed_scale = 1
+		attacking = false
+		await get_tree().create_timer(1, false).timeout
+		animations.speed_scale = 1
+		three_next_attack = false
+
+func two_axe_anim():
+	animations.play("my/axe_attack2")
+	await get_tree().create_timer(0.2, false).timeout
+	Engine.time_scale = 0.5
+	await get_tree().create_timer(0.2, false).timeout
+	Engine.time_scale = 1
+	await get_tree().create_timer(0.4, false).timeout
+	Engine.time_scale = 1
+	go_on_attack()
+
+func three_axe_anim():
+	attack_particles.emitting = true
+	animations.play("my/axe_attack3")
+	await get_tree().create_timer(0.2, false).timeout
+	Engine.time_scale = 0.5
+	await get_tree().create_timer(0.2, false).timeout
+	Engine.time_scale = 1
+	await get_tree().create_timer(0.2, false).timeout
+	attack_particles.emitting = false
+	go_on_attack()
+	
+
+func go_on_attack():
+	for i in range(5):
+		await get_tree().create_timer(0.01, false).timeout
+		var attack_offset = transform.basis.z.normalized() * 0.3
+		global_translate(attack_offset)
+		
+func camera_shake_func():
+	for i in range(10):
+		var shake_offset = Vector3(
+		randf_range(-0.2, 0.2), # Случайное смещение вдоль оси X
+		randf_range(-0.2, 0.2), # Случайное смещение вдоль оси Y
+		randf_range(-0.2, 0.2) # Случайное смещение вдоль оси Z
+		)
+		await get_tree().create_timer(0.03, false).timeout
+		camera.global_transform.origin += shake_offset
+
 		
