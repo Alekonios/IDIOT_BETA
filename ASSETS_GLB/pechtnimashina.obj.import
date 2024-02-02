@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://vao03p8ogq15"
+path="res://.godot/imported/pechtnimashina.obj-61c0e81292138c7faad1f1c5c91df58d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pechtnimashina.obj-61c0e81292138c7faad1f1c5c91df58d.mesh"]
+
+source_file="res://ASSETS_GLB/pechtnimashina.obj"
+dest_files=["res://.godot/imported/pechtnimashina.obj-61c0e81292138c7faad1f1c5c91df58d.mesh", "res://.godot/imported/pechtnimashina.obj-61c0e81292138c7faad1f1c5c91df58d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

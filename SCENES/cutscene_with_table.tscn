@@ -1,0 +1,215 @@
+[gd_scene load_steps=23 format=3 uid="uid://cmekf08tihkeo"]
+
+[ext_resource type="Texture2D" uid="uid://cjwejqy3n0x6k" path="res://TEXTURES/1674536015_catherineasquithgallery-com-p-fon-korichnevie-doski-216.jpg" id="1_ncgep"]
+[ext_resource type="Texture2D" uid="uid://4qtll6a8qjc" path="res://TEXTURES/stena_kirpichnyj_tekstura_146967_3415x3415.jpg" id="2_geinm"]
+[ext_resource type="Texture2D" uid="uid://cujmahcdwmvwa" path="res://ASSETS_GLB/rychka.png" id="3_v2qr6"]
+[ext_resource type="ArrayMesh" uid="uid://dtlu0h2qy672h" path="res://ASSETS_GLB/rychka.obj" id="4_abt67"]
+[ext_resource type="Texture2D" uid="uid://dojelwwi8k2x" path="res://ASSETS_GLB/table.png" id="5_7fe1b"]
+[ext_resource type="ArrayMesh" uid="uid://d0abd6kmmgbgh" path="res://ASSETS_GLB/table.obj" id="6_rjgv3"]
+[ext_resource type="Texture2D" uid="uid://brtw5f444bkep" path="res://ASSETS_GLB/lampa.png" id="7_2ft31"]
+[ext_resource type="ArrayMesh" uid="uid://sy2wph21i7lj" path="res://ASSETS_GLB/lampa.obj" id="8_s3a0g"]
+[ext_resource type="Texture2D" uid="uid://b14hu2tbqqlhf" path="res://ASSETS_GLB/pechtnimashina.png" id="9_ybn34"]
+[ext_resource type="ArrayMesh" uid="uid://vao03p8ogq15" path="res://ASSETS_GLB/pechtnimashina.obj" id="10_6qt55"]
+[ext_resource type="FontFile" uid="uid://bak8p4n3rxscn" path="res://TTF/Propisi Cyr Lat_2.ttf" id="11_wulb8"]
+[ext_resource type="Texture2D" uid="uid://duy84sshgq12c" path="res://ASSETS_GLB/book (1).png" id="12_jjw2s"]
+[ext_resource type="ArrayMesh" uid="uid://bfh85x1ky2vwc" path="res://ASSETS_GLB/book (1).obj" id="13_yxhwa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_054ip"]
+albedo_color = Color(0.552941, 0.552941, 0.552941, 1)
+albedo_texture = ExtResource("1_ncgep")
+metallic = 1.0
+uv1_scale = Vector3(1, 1, 2)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 6.27666
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jce53"]
+diffuse_mode = 1
+albedo_texture = ExtResource("2_geinm")
+metallic = 1.0
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.10957
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4v1y"]
+disable_ambient_light = true
+albedo_texture = ExtResource("3_v2qr6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qxyq"]
+albedo_color = Color(0.827451, 0.827451, 0.827451, 1)
+albedo_texture = ExtResource("5_7fe1b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg44i"]
+albedo_texture = ExtResource("7_2ft31")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76fyr"]
+albedo_texture = ExtResource("9_ybn34")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tq33c"]
+albedo_texture = ExtResource("12_jjw2s")
+
+[sub_resource type="Environment" id="Environment_ij8fk"]
+background_mode = 1
+background_color = Color(0.141176, 0.141176, 0.141176, 1)
+tonemap_mode = 2
+tonemap_exposure = 0.66
+tonemap_white = 16.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1447
+volumetric_fog_detail_spread = 6.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_adbfj"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27826, 0, 0.405396)
+material_override = SubResource("StandardMaterial3D_054ip")
+size = Vector3(15.2738, 1, 17.7117)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5.89937, 5.05822, 0.405396)
+material_override = SubResource("StandardMaterial3D_jce53")
+size = Vector3(9.49097, 1, 17.7117)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -2.07497, 5.05822, -1.03344)
+material_override = SubResource("StandardMaterial3D_jce53")
+size = Vector3(9.49097, 1, 19.5686)
+
+[node name="objects" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22193, 0, 0)
+
+[node name="Rychka" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.00457403, 0.02199, 0.00875098, -0.0211836, -0.000170817, 0.0115016, 0.0105544, -0.0098728, 0.0192923, -3.34682, 2.26268, 1.02811)
+material_override = SubResource("StandardMaterial3D_i4v1y")
+mesh = ExtResource("4_abt67")
+skeleton = NodePath("../..")
+
+[node name="Table" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(-0.00479231, 0, -0.407788, 0, 0.217927, 0, 0.237493, 0, -0.00822865, -3.09999, 0.479986, 0.826212)
+material_override = SubResource("StandardMaterial3D_2qxyq")
+mesh = ExtResource("6_rjgv3")
+skeleton = NodePath("../..")
+
+[node name="Lampa" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(-0.089454, 0, 0.0576823, 0, 0.106439, 0, -0.0576823, 0, -0.089454, -2.3477, 2.24014, 0.199701)
+material_override = SubResource("StandardMaterial3D_lg44i")
+mesh = ExtResource("8_s3a0g")
+skeleton = NodePath("../..")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="objects/Lampa"]
+transform = Transform3D(-1.51453, 9.25206, -0.610486, -5.6606, -0.432677, 7.48582, 7.34376, 1.57457, 5.64419, 0.034729, 7.12526, -2.62663)
+light_color = Color(1, 0.854902, 0.207843, 1)
+shadow_enabled = true
+spot_range = 1.69729
+
+[node name="Lampa2" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(-0.0205721, 0, -0.104432, 0, 0.106439, 0, 0.104432, 0, -0.0205721, -4.12401, 2.24014, 0.929093)
+material_override = SubResource("StandardMaterial3D_lg44i")
+mesh = ExtResource("8_s3a0g")
+skeleton = NodePath("../..")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="objects/Lampa2"]
+transform = Transform3D(-1.51453, 9.25206, -0.610486, -5.6606, -0.432677, 7.48582, 7.34376, 1.57457, 5.64419, 0.034729, 7.12526, -2.62663)
+light_color = Color(1, 0.854902, 0.207843, 1)
+shadow_enabled = true
+spot_range = 1.69729
+
+[node name="OmniLight3D" type="OmniLight3D" parent="objects/Lampa2"]
+transform = Transform3D(9.39505, 0, 0, 0, 9.39505, 0, -1.19209e-07, 0, 9.39505, -0.0816364, 7.03612, -2.55706)
+light_color = Color(1, 0.670588, 0.196078, 1)
+omni_range = 0.135
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="objects/Lampa2"]
+transform = Transform3D(9.39505, 0, 0, 0, 9.39505, 0, -1.19209e-07, 0, 9.39505, -7.69335, 6.98119, -14.0943)
+light_color = Color(1, 0.670588, 0.196078, 1)
+omni_range = 0.135
+
+[node name="Pechtnimashina" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(-0.104424, 0, -0.0350146, 0, 0.110138, 0, 0.0350146, 0, -0.104424, -3.56635, 2.24572, 0.36505)
+material_override = SubResource("StandardMaterial3D_76fyr")
+mesh = ExtResource("10_6qt55")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="objects/Pechtnimashina"]
+transform = Transform3D(-2.15327, 0.0122091, -0.0198061, 0.00452666, 2.01789, 0.751793, 0.0228229, 0.751709, -2.0178, 0.0915327, 3.86656, 3.35481)
+modulate = Color(0, 0, 0, 1)
+text = "ИДИОТ"
+font = ExtResource("11_wulb8")
+outline_size = 3
+
+[node name="Label3D3" type="Label3D" parent="objects/Pechtnimashina"]
+transform = Transform3D(-2.15327, 0.0122091, -0.0198059, 0.00452666, 2.01789, 0.751793, 0.0228229, 0.751709, -2.0178, 0.0541801, 3.43372, 3.16517)
+modulate = Color(0, 0, 0, 1)
+text = "В конце ноября, в оттепель, часов в девять утра, поезд"
+font = ExtResource("11_wulb8")
+font_size = 25
+outline_size = 3
+
+[node name="Label3D4" type="Label3D" parent="objects/Pechtnimashina"]
+transform = Transform3D(-2.15327, 0.0122091, -0.0198059, 0.00452666, 2.01789, 0.751793, 0.0228229, 0.751709, -2.0178, 0.128956, 3.12828, 2.94216)
+modulate = Color(0, 0, 0, 1)
+text = "Петербургско-Варшавской железной дороги на всех"
+font = ExtResource("11_wulb8")
+font_size = 25
+outline_size = 3
+
+[node name="Label3D5" type="Label3D" parent="objects/Pechtnimashina"]
+transform = Transform3D(-2.15327, 0.0122091, -0.0198059, 0.00452666, 2.01789, 0.751793, 0.0228229, 0.751709, -2.0178, 0.0274043, 2.72966, 2.75729)
+modulate = Color(0, 0, 0, 1)
+text = "парах подходил к Петербургу. Было так сыро и туманно,"
+font = ExtResource("11_wulb8")
+font_size = 25
+outline_size = 3
+
+[node name="Label3D6" type="Label3D" parent="objects/Pechtnimashina"]
+transform = Transform3D(-2.15327, 0.0122091, -0.0198059, 0.00452666, 2.01789, 0.751793, 0.0228229, 0.751709, -2.0178, 0.0845594, 2.41884, 2.58683)
+modulate = Color(0, 0, 0, 1)
+text = "что насилу рассвело; в десяти шагах, вправо и влево"
+font = ExtResource("11_wulb8")
+font_size = 25
+outline_size = 3
+
+[node name="Label3D7" type="Label3D" parent="objects/Pechtnimashina"]
+transform = Transform3D(-2.15327, 0.0122091, -0.0198059, 0.00452666, 2.01789, 0.751793, 0.0228229, 0.751709, -2.0178, 0.0237832, 2.06913, 2.36772)
+modulate = Color(0, 0, 0, 1)
+text = " от дороги, трудно было разглядеть хоть что-нибудь"
+font = ExtResource("11_wulb8")
+font_size = 25
+outline_size = 3
+
+[node name="Label3D2" type="Label3D" parent="objects/Pechtnimashina"]
+transform = Transform3D(-2.15327, 0.0122091, -0.0198059, 0.00452666, 2.01789, 0.751793, 0.0228229, 0.751709, -2.0178, 0.0744829, 4.40604, 3.65025)
+modulate = Color(0, 0, 0, 1)
+text = "ДОСТОЕВСКИЙ"
+font = ExtResource("11_wulb8")
+outline_size = 4
+
+[node name="Label3D8" type="Label3D" parent="objects/Pechtnimashina"]
+transform = Transform3D(-0.999922, 0.0125487, -2.95765e-08, -2.99781e-08, -3.1812e-08, 1, 0.0125486, 0.999922, 3.21857e-08, 0.0611286, 0.302691, -4.06891)
+modulate = Color(0.27451, 0.133333, 0.0352941, 1)
+text = "mr.guboshlyop"
+font = ExtResource("11_wulb8")
+font_size = 70
+outline_size = 1
+
+[node name="Book(1)" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.0189808, 0, -0.0238024, 0, 0.0304438, 0, 0.0238024, 0, 0.0189808, -2.21968, 2.25585, 1.45281)
+material_override = SubResource("StandardMaterial3D_tq33c")
+mesh = ExtResource("13_yxhwa")
+skeleton = NodePath("../..")
+
+[node name="graphics" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="graphics"]
+environment = SubResource("Environment_ij8fk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.398441, -0.875777, -0.272506, 0.453446, -0.0701714, 0.888517, -0.797265, -0.477589, 0.369158, 0, 0, 0)
+light_energy = 0.09
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.986709, 0.0705707, -0.146371, -0.0120483, 0.930065, 0.367198, 0.162048, -0.360555, 0.918554, -0.570144, 2.80588, 1.88248)
+attributes = SubResource("CameraAttributesPractical_adbfj")

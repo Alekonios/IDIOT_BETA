@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dtlu0h2qy672h"
+path="res://.godot/imported/rychka.obj-efcb6ea37b105339b47ed76907a72bdf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rychka.obj-efcb6ea37b105339b47ed76907a72bdf.mesh"]
+
+source_file="res://ASSETS_GLB/rychka.obj"
+dest_files=["res://.godot/imported/rychka.obj-efcb6ea37b105339b47ed76907a72bdf.mesh", "res://.godot/imported/rychka.obj-efcb6ea37b105339b47ed76907a72bdf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
