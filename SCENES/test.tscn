@@ -104,10 +104,13 @@ ambient_light_energy = 0.49
 tonemap_mode = 2
 tonemap_exposure = 0.33
 tonemap_white = 3.19
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 1
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.04
 volumetric_fog_detail_spread = 0.5
-volumetric_fog_temporal_reprojection_amount = 0.944
+volumetric_fog_temporal_reprojection_amount = 0.99
 
 [node name="test" type="Node3D"]
 transform = Transform3D(0.236229, 0, 0, 0, 0.236229, 0, 0, 0, 0.236229, -44.7474, -11.3826, -1.23732)
@@ -772,13 +775,67 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.196, 3.72218, 79.701)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.209724, -1.13953, 0.312759)
 shape = SubResource("BoxShape3D_y0r4b")
 
+[node name="first_nav_for_security" type="Node3D" parent="navigation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.536, 0, 80.5233)
+
 [node name="charapters" type="Node3D" parent="."]
 
 [node name="idiot" parent="charapters" instance=ExtResource("1_dofng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1759, -0.24057, -174.862)
 
+[node name="Skeleton3D" parent="charapters/idiot/Armature" index="1"]
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/rotation = Quaternion(0.0334431, 0, 0, 0.999441)
+bones/4/rotation = Quaternion(-0.0334431, 0, 0, 0.999441)
+bones/7/rotation = Quaternion(0.993675, 5.35478e-08, 4.73823e-07, 0.112297)
+bones/8/rotation = Quaternion(-0.106984, -0.0287044, 0.77703, 0.619641)
+bones/9/rotation = Quaternion(-0.0924733, 0.0291299, -0.789908, 0.605512)
+bones/10/rotation = Quaternion(0.24802, -0.110295, 0.861315, -0.429484)
+bones/11/rotation = Quaternion(-0.278875, -0.109231, 0.861831, 0.409321)
+bones/12/rotation = Quaternion(-0.00730985, -2.03482e-09, -0.606554, 0.795009)
+bones/13/rotation = Quaternion(0.573144, 0.417769, -0.561219, 0.426624)
+bones/14/rotation = Quaternion(-0.122256, 0.000779772, -0.00632945, 0.992478)
+bones/15/rotation = Quaternion(-0.00873162, 9.23806e-05, -0.0105884, 0.999906)
+bones/16/rotation = Quaternion(-0.534556, -0.0101218, 0.019266, 0.844853)
+bones/17/rotation = Quaternion(0.234665, 0.132618, 0.473788, 0.838373)
+bones/18/rotation = Quaternion(0.321576, -1.11143e-07, 4.99651e-07, 0.946884)
+bones/19/rotation = Quaternion(-0.11886, -7.12859e-08, 1.72587e-07, 0.992911)
+bones/21/rotation = Quaternion(0.500497, -0.0520704, -0.0894231, 0.859532)
+bones/22/rotation = Quaternion(0.00898706, 5.4339e-08, 8.44627e-08, 0.99996)
+bones/23/rotation = Quaternion(0.249793, -8.9148e-08, 1.23232e-08, 0.968299)
+bones/25/rotation = Quaternion(0.502548, -0.0192868, -0.0331467, 0.863698)
+bones/26/rotation = Quaternion(0.0150863, -2.37323e-08, 1.6391e-09, 0.999886)
+bones/27/rotation = Quaternion(0.174771, 1.32553e-08, -1.453e-08, 0.984609)
+bones/29/rotation = Quaternion(0.505667, -0.0230853, -0.039331, 0.861522)
+bones/30/rotation = Quaternion(0.0132029, -6.68228e-08, 4.05324e-08, 0.999913)
+bones/31/rotation = Quaternion(0.171755, 2.99934e-08, -2.91809e-08, 0.98514)
+bones/33/rotation = Quaternion(0.572651, -0.418129, 0.561775, 0.426202)
+bones/34/rotation = Quaternion(-0.122304, -0.000694063, 0.00563157, 0.992477)
+bones/35/rotation = Quaternion(-0.00931338, -2.26861e-05, 0.00243192, 0.999954)
+bones/36/rotation = Quaternion(-0.526449, 0.0446734, 0.0208556, 0.848776)
+bones/37/rotation = Quaternion(0.30518, -0.166016, -0.448099, 0.823718)
+bones/38/rotation = Quaternion(0.23316, 6.94346e-07, 5.17168e-08, 0.972438)
+bones/39/rotation = Quaternion(-0.177494, -5.08189e-07, -1.49405e-07, 0.984122)
+bones/41/rotation = Quaternion(0.496637, -0.00529704, -0.00925688, 0.867893)
+bones/42/rotation = Quaternion(0.0136514, 4.80622e-08, 2.62396e-08, 0.999907)
+bones/43/rotation = Quaternion(0.189408, 1.26016e-07, 4.65947e-08, 0.981899)
+bones/45/rotation = Quaternion(0.507341, -0.0121491, -0.020628, 0.861413)
+bones/46/rotation = Quaternion(-0.00135136, 4.72501e-08, 2.14859e-08, 0.999999)
+bones/47/rotation = Quaternion(0.234614, 7.66151e-08, 1.90864e-09, 0.972089)
+bones/49/rotation = Quaternion(0.486294, -0.0153833, -0.0276236, 0.873223)
+bones/50/rotation = Quaternion(0.0189788, -1.07383e-07, -3.42905e-08, 0.99982)
+bones/51/rotation = Quaternion(0.338008, 1.15903e-07, 5.47662e-08, 0.941143)
+bones/53/rotation = Quaternion(0.00784351, 0.0734595, 0.991632, -0.10587)
+bones/54/rotation = Quaternion(-0.0735426, 0.00713703, -0.0963626, 0.9926)
+bones/55/rotation = Quaternion(0.524857, 0.0230294, -0.0142073, 0.85076)
+bones/56/rotation = Quaternion(0.217659, -0.0605228, 0.0135243, 0.974053)
+bones/58/rotation = Quaternion(-0.00105371, 0.0097661, 0.994182, 0.107267)
+bones/59/rotation = Quaternion(0.000852924, 8.25235e-05, 0.0977485, 0.995211)
+bones/60/rotation = Quaternion(0.511626, -0.0233664, 0.0139212, 0.858778)
+bones/61/rotation = Quaternion(0.223816, 0.0612513, -0.0140952, 0.972603)
+
 [node name="right_hand" parent="charapters/idiot/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.0123743, -0.469234, -0.882987, 0.999536, -0.0187729, 0.023984, -0.0278304, -0.882874, 0.468784, -858.841, -62.9533, -1097.83)
+transform = Transform3D(0.0123743, -0.469234, -0.882987, 0.999536, -0.0187728, 0.0239841, -0.0278304, -0.882874, 0.468784, -858.841, -62.9533, -1097.83)
 
 [node name="spina" parent="charapters/idiot/Armature/Skeleton3D" index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.0668488, 0.997763, 0, -0.997763, 0.0668488, -1.23156, -83.8499, -921.959)
@@ -798,6 +855,9 @@ draw_pass_1 = SubResource("BoxMesh_bf5ov")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8853, -0.300782, -74.1012)
 navpoint_player = NodePath("../../../navigation/navpoint_player")
 NavpointS = [NodePath("../../../navigation/nav1"), NodePath("../../../navigation/nav2"), NodePath("../../../navigation/nav4"), NodePath("../../../navigation/nav5"), NodePath("../../../navigation/nav6"), NodePath("../../../navigation/nav7"), NodePath("../../../navigation/nav8"), NodePath("../../../navigation/nav9"), NodePath("../../../navigation/nav10"), NodePath("../../../navigation/nav11"), NodePath("../../../navigation/nav12")]
+
+[node name="BoneAttachment3D" parent="charapters/Z_humans/z_human1/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -1.37188e-11, 2.87413e-11, -2.91038e-11, -2.03005e-07, 1, -1.81899e-11, -1, -2.03005e-07, -0.0153861, -20.596, -1563.39)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="charapters/Z_humans/z_human1/Armature/Skeleton3D/BoneAttachment3D" index="1"]
 transform = Transform3D(-423.318, -8.27582e-09, 3.70167e-05, -6.15257e-09, 423.318, 0.00010444, -3.70169e-05, 0.00010444, -423.318, -66.2488, -104.694, 81.8833)
@@ -853,8 +913,8 @@ spot_angle = 4.86342
 [node name="ROBOTS" type="Node3D" parent="charapters"]
 
 [node name="hunter" parent="charapters/ROBOTS" node_paths=PackedStringArray("purpose", "Navpoint", "ramka_nav_point") instance=ExtResource("20_0162m")]
-transform = Transform3D(0.992899, 0, 0.118959, 0, 1, 0, -0.118959, 0, 0.992899, 79.0879, -0.300781, 66.7672)
-purpose = NodePath("../../../navigation/nav_the_other_ramka")
+transform = Transform3D(0.992899, 0, 0.118959, 0, 1, 0, -0.118959, 0, 0.992899, 79.0879, -0.300781, 93.2646)
+purpose = NodePath("../../../navigation/first_nav_for_security")
 Navpoint = NodePath("../../../navigation/navpoint_player")
 ramka_nav_point = NodePath("../../../navigation/nav_the_other_ramka")
 
@@ -937,7 +997,7 @@ autostart = true
 [connection signal="body_entered" from="navigation/nav11/Area3D" to="navigation/nav11" method="on_nav_point_body_entered"]
 [connection signal="body_entered" from="navigation/nav12/Area3D" to="navigation/nav12" method="on_nav_point_body_entered"]
 [connection signal="body_entered" from="navigation/navpoint_player/Area3D" to="charapters/ROBOTS/hunter" method="player_nav_point_body_entered"]
-[connection signal="body_entered" from="navigation/nav_the_other_ramka/Area3D" to="charapters/ROBOTS/hunter" method="player_nav_point_body_entered"]
+[connection signal="body_entered" from="navigation/nav_the_other_ramka/Area3D" to="charapters/ROBOTS/hunter" method="_on_ramka_3d_body_entered"]
 [connection signal="timeout" from="timers/light_timer" to="." method="_on_timer_timeout"]
 
 [editable path="objects/flashlight/break_flash_light"]

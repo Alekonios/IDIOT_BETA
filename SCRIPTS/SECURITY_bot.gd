@@ -24,6 +24,7 @@ var signalization = false
 var walk_and_Shoot = false
 var shooting = false
 var notifications = false
+var go_back = false
 
 var health = 100
 
@@ -124,10 +125,12 @@ func player_nav_point_body_entered(_body):
 		if !notifications:
 			the_path_is_set = false
 			await get_tree().create_timer(10, false).timeout
-			the_path_is_set = true
-			if !notifications:
+			if !notifications and !the_path_is_set:
+				the_path_is_set = true
 				purpose.global_position = ramka_nav_point.global_position
-		
 
-
-
+func _on_ramka_3d_body_entered(_body):
+	if _body.is_in_group("SEC_BOT"):
+		if !notifications:
+			the_path_is_set = false
+	

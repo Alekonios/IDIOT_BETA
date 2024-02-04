@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://cmekf08tihkeo"]
+[gd_scene load_steps=42 format=3 uid="uid://cmekf08tihkeo"]
 
 [ext_resource type="Texture2D" uid="uid://cjwejqy3n0x6k" path="res://TEXTURES/1674536015_catherineasquithgallery-com-p-fon-korichnevie-doski-216.jpg" id="1_ncgep"]
+[ext_resource type="Script" path="res://SCRIPTS/cutscene_with_table.gd" id="1_o6ogc"]
 [ext_resource type="Texture2D" uid="uid://4qtll6a8qjc" path="res://TEXTURES/stena_kirpichnyj_tekstura_146967_3415x3415.jpg" id="2_geinm"]
 [ext_resource type="Texture2D" uid="uid://cujmahcdwmvwa" path="res://ASSETS_GLB/rychka.png" id="3_v2qr6"]
 [ext_resource type="ArrayMesh" uid="uid://dtlu0h2qy672h" path="res://ASSETS_GLB/rychka.obj" id="4_abt67"]
@@ -13,6 +14,14 @@
 [ext_resource type="FontFile" uid="uid://bak8p4n3rxscn" path="res://TTF/Propisi Cyr Lat_2.ttf" id="11_wulb8"]
 [ext_resource type="Texture2D" uid="uid://duy84sshgq12c" path="res://ASSETS_GLB/book (1).png" id="12_jjw2s"]
 [ext_resource type="ArrayMesh" uid="uid://bfh85x1ky2vwc" path="res://ASSETS_GLB/book (1).obj" id="13_yxhwa"]
+[ext_resource type="Texture2D" uid="uid://ctswynqe3b5j7" path="res://TEXTURES/old_bot_photo.png" id="14_doj6s"]
+[ext_resource type="Texture2D" uid="uid://btj7c4hbh1844" path="res://TEXTURES/draw.png" id="15_ci7k2"]
+[ext_resource type="Texture2D" uid="uid://cbit48xbo3gip" path="res://TEXTURES/picture_v3.png" id="16_jpeyr"]
+[ext_resource type="Texture2D" uid="uid://yid12t4j32yb" path="res://TEXTURES/oldfriends.png" id="16_lagl8"]
+[ext_resource type="Texture2D" uid="uid://c0ter6ungdklk" path="res://TEXTURES/in_bunker.png" id="18_3nuyt"]
+[ext_resource type="Texture2D" uid="uid://dpkylmweawv3q" path="res://TEXTURES/rykopasatie.png" id="18_4qgq5"]
+[ext_resource type="PackedScene" uid="uid://lc2ffwxvljma" path="res://ASSETS_GLB/gear_wheel.glb" id="19_rmaw4"]
+[ext_resource type="ArrayOccluder3D" uid="uid://db121jnu7celn" path="res://occ/cutscene_with_table.occ" id="22_uof75"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_054ip"]
 albedo_color = Color(0.552941, 0.552941, 0.552941, 1)
@@ -34,6 +43,8 @@ uv1_world_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4v1y"]
 disable_ambient_light = true
 albedo_texture = ExtResource("3_v2qr6")
+metallic = 0.79
+metallic_specular = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qxyq"]
 albedo_color = Color(0.827451, 0.827451, 0.827451, 1)
@@ -48,19 +59,106 @@ albedo_texture = ExtResource("9_ybn34")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tq33c"]
 albedo_texture = ExtResource("12_jjw2s")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhmc3"]
+albedo_texture = ExtResource("14_doj6s")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d37rt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ymed"]
+albedo_texture = ExtResource("15_ci7k2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqgh4"]
+albedo_texture = ExtResource("16_jpeyr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yw34"]
+albedo_texture = ExtResource("16_lagl8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5mgr"]
+albedo_color = Color(0.796078, 0.796078, 0.796078, 1)
+albedo_texture = ExtResource("18_4qgq5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4tlv"]
+albedo_texture = ExtResource("18_3nuyt")
+
 [sub_resource type="Environment" id="Environment_ij8fk"]
 background_mode = 1
 background_color = Color(0.141176, 0.141176, 0.141176, 1)
 tonemap_mode = 2
 tonemap_exposure = 0.66
 tonemap_white = 16.0
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 8.0
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.1447
-volumetric_fog_detail_spread = 6.0
+volumetric_fog_density = 0.2
+volumetric_fog_anisotropy = 0.52
+volumetric_fog_temporal_reprojection_amount = 0.99
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_adbfj"]
 
+[sub_resource type="Animation" id="Animation_rvpy5"]
+resource_name = "cam_anim"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.238285, 2.80588, 3.68749), Vector3(-1.37523, 2.80588, 2.27868), Vector3(-0.924163, 2.82323, 2.0206), Vector3(-0.485857, 2.56589, 1.57344), Vector3(-0.17274, 2.56589, 1.57344), Vector3(-0.107495, 2.56589, 1.45115), Vector3(0.0674353, 2.56847, 1.29981), Vector3(0.236989, 2.56847, 1.29981), Vector3(0.277513, 2.56847, 1.29981), Vector3(0.35035, 2.56847, 1.31917), Vector3(0.531349, 2.56847, 1.30258), Vector3(0.753133, 2.62551, 1.64742)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.061063, -0.152525, 0.0175601), Vector3(-0.231338, 0.106555, -0.12635), Vector3(-0.502669, -0.619912, 0.0650735), Vector3(-0.916004, 0.353192, -0.110483), Vector3(-0.916004, 1.32552, -0.110483), Vector3(-0.916004, -0.724479, -0.110483), Vector3(-0.916004, 0.293973, -0.110483), Vector3(-0.916004, 0.918522, -0.110483), Vector3(-0.916004, 0.918522, -0.110483), Vector3(-0.916004, -0.263747, -0.110483), Vector3(-0.916004, 0.38103, -0.110483), Vector3(-1.11925, -0.495712, -0.262642)]
+}
+
+[sub_resource type="Animation" id="Animation_l5goc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.238285, 2.80588, 3.68749)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.061063, -0.152525, 0.0175601)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fx25l"]
+_data = {
+"RESET": SubResource("Animation_l5goc"),
+"cam_anim": SubResource("Animation_rvpy5")
+}
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_o6ogc")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27826, 0, 0.405396)
@@ -81,7 +179,7 @@ size = Vector3(9.49097, 1, 19.5686)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22193, 0, 0)
 
 [node name="Rychka" type="MeshInstance3D" parent="objects"]
-transform = Transform3D(0.00457403, 0.02199, 0.00875098, -0.0211836, -0.000170817, 0.0115016, 0.0105544, -0.0098728, 0.0192923, -3.34682, 2.26268, 1.02811)
+transform = Transform3D(0.00457403, 0.02199, 0.00875098, -0.0211836, -0.000170817, 0.0115016, 0.0105544, -0.0098728, 0.0192923, -3.43755, 2.26268, 1.02811)
 material_override = SubResource("StandardMaterial3D_i4v1y")
 mesh = ExtResource("4_abt67")
 skeleton = NodePath("../..")
@@ -99,6 +197,18 @@ mesh = ExtResource("8_s3a0g")
 skeleton = NodePath("../..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="objects/Lampa"]
+transform = Transform3D(-1.51453, 9.25206, -0.610486, -5.6606, -0.432677, 7.48582, 7.34376, 1.57457, 5.64419, 0.034729, 7.12526, -2.62663)
+light_color = Color(1, 0.854902, 0.207843, 1)
+shadow_enabled = true
+spot_range = 1.69729
+
+[node name="Lampa3" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.0369414, 0, 0.0998228, 0, 0.106439, 0, -0.0998228, 0, 0.0369414, -1.9651, 2.24014, 1.77222)
+material_override = SubResource("StandardMaterial3D_lg44i")
+mesh = ExtResource("8_s3a0g")
+skeleton = NodePath("../..")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="objects/Lampa3"]
 transform = Transform3D(-1.51453, 9.25206, -0.610486, -5.6606, -0.432677, 7.48582, 7.34376, 1.57457, 5.64419, 0.034729, 7.12526, -2.62663)
 light_color = Color(1, 0.854902, 0.207843, 1)
 shadow_enabled = true
@@ -123,6 +233,11 @@ omni_range = 0.135
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="objects/Lampa2"]
 transform = Transform3D(9.39505, 0, 0, 0, 9.39505, 0, -1.19209e-07, 0, 9.39505, -7.69335, 6.98119, -14.0943)
+light_color = Color(1, 0.670588, 0.196078, 1)
+omni_range = 0.135
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="objects/Lampa2"]
+transform = Transform3D(9.39505, 0, 1.19209e-07, 0, 9.39505, 0, -1.19209e-07, 0, 9.39505, 3.41076, 6.93983, -18.9419)
 light_color = Color(1, 0.670588, 0.196078, 1)
 omni_range = 0.135
 
@@ -195,9 +310,45 @@ font_size = 70
 outline_size = 1
 
 [node name="Book(1)" type="MeshInstance3D" parent="objects"]
-transform = Transform3D(0.0189808, 0, -0.0238024, 0, 0.0304438, 0, 0.0238024, 0, 0.0189808, -2.21968, 2.25585, 1.45281)
+transform = Transform3D(0.0189808, 0, -0.0238024, 0, 0.0304438, 0, 0.0238024, 0, 0.0189808, -2.63584, 2.25585, 0.523476)
 material_override = SubResource("StandardMaterial3D_tq33c")
 mesh = ExtResource("13_yxhwa")
+skeleton = NodePath("../..")
+
+[node name="photo7" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.263844, -2.12471e-09, -0.0486078, -0.0315408, -1.77735e-08, -0.406611, 0, 0.409506, -1.79001e-08, -3.79811, 2.80984, -0.529183)
+material_override = SubResource("StandardMaterial3D_qhmc3")
+mesh = SubResource("PlaneMesh_d37rt")
+skeleton = NodePath("../..")
+
+[node name="photo8" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.363832, 0.00348111, 0.0360889, 0.0260257, -6.20144e-06, -0.504538, -0.00250363, 0.505817, -0.000254552, -4.25395, 2.88143, -0.522222)
+material_override = SubResource("StandardMaterial3D_0ymed")
+mesh = SubResource("PlaneMesh_d37rt")
+skeleton = NodePath("../..")
+
+[node name="photo5" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.100225, 0, 0.0542067, 0, 0.14918, 0, -0.0390904, 0, 0.138983, -3.20499, 2.24524, 1.04463)
+material_override = SubResource("StandardMaterial3D_kqgh4")
+mesh = SubResource("PlaneMesh_d37rt")
+skeleton = NodePath("../..")
+
+[node name="photo3" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.154249, 0, -0.061168, 0, 0.148671, 0, 0.103429, 0, 0.0912235, -2.80117, 2.24524, 1.04083)
+material_override = SubResource("StandardMaterial3D_6yw34")
+mesh = SubResource("PlaneMesh_d37rt")
+skeleton = NodePath("../..")
+
+[node name="photo6" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.15251, 0, 0.0202584, 0, 0.12513, 0, -0.0342544, 0, 0.0901946, -3.72616, 2.24524, 1.38814)
+material_override = SubResource("StandardMaterial3D_g5mgr")
+mesh = SubResource("PlaneMesh_d37rt")
+skeleton = NodePath("../..")
+
+[node name="photo4" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.154249, 0, -0.061168, 0, 0.148671, 0, 0.103429, 0, 0.0912235, -2.43262, 2.24524, 1.44109)
+material_override = SubResource("StandardMaterial3D_s4tlv")
+mesh = SubResource("PlaneMesh_d37rt")
 skeleton = NodePath("../..")
 
 [node name="graphics" type="Node3D" parent="."]
@@ -211,5 +362,40 @@ light_energy = 0.09
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.986709, 0.0705707, -0.146371, -0.0120483, 0.930065, 0.367198, 0.162048, -0.360555, 0.918554, -0.570144, 2.80588, 1.88248)
+transform = Transform3D(0.988401, -0.00808504, -0.151651, 0.0175265, 0.997982, 0.061025, 0.150851, -0.0629751, 0.986549, -0.238285, 2.80588, 3.68749)
 attributes = SubResource("CameraAttributesPractical_adbfj")
+
+[node name="gear_wheel" parent="." instance=ExtResource("19_rmaw4")]
+transform = Transform3D(0.0133187, 0, 0, 0, 0.0133187, 0, 0, 0, 0.0133187, -0.468629, 2.23871, 1.04598)
+
+[node name="gear_wheel9" parent="." instance=ExtResource("19_rmaw4")]
+transform = Transform3D(0.0133187, 0, 0, 0, 0.0133187, 0, 0, 0, 0.0133187, 0.402038, 2.23871, 1.54383)
+
+[node name="gear_wheel2" parent="." instance=ExtResource("19_rmaw4")]
+transform = Transform3D(0.0133187, 0, 0, 0, 0.0133187, 0, 0, 0, 0.0133187, -0.330683, 2.23871, 0.956017)
+
+[node name="gear_wheel3" parent="." instance=ExtResource("19_rmaw4")]
+transform = Transform3D(0.00220253, 0, -0.00668213, 0, 0.00703577, 0, 0.00668213, 0, 0.00220253, 0.0117079, 2.23871, 1.16945)
+
+[node name="gear_wheel4" parent="." instance=ExtResource("19_rmaw4")]
+transform = Transform3D(0.00220253, 0, -0.00668213, 0, 0.00703577, 0, 0.00668213, 0, 0.00220253, -0.239977, 2.23871, 1.07472)
+
+[node name="gear_wheel7" parent="." instance=ExtResource("19_rmaw4")]
+transform = Transform3D(0.00220253, 0, -0.00668213, 0, 0.00703577, 0, 0.00668213, 0, 0.00220253, 0.128087, 2.23871, 1.70556)
+
+[node name="gear_wheel8" parent="." instance=ExtResource("19_rmaw4")]
+transform = Transform3D(0.00220253, 0, -0.00668213, 0, 0.00703577, 0, 0.00668213, 0, 0.00220253, 0.0419006, 2.23871, 1.6151)
+
+[node name="gear_wheel5" parent="." instance=ExtResource("19_rmaw4")]
+transform = Transform3D(0.00288281, 0, -0.008746, 0, 0.00920886, 0, 0.008746, 0, 0.00288281, 0.218814, 2.23871, 0.72673)
+
+[node name="gear_wheel6" parent="." instance=ExtResource("19_rmaw4")]
+transform = Transform3D(0.00237444, 0, -0.00720367, 0, 0.0075849, 0, 0.00720367, 0, 0.00237444, 0.234539, 2.23871, 0.833361)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fx25l")
+}
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("22_uof75")
