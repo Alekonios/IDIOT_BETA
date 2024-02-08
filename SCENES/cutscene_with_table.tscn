@@ -96,34 +96,6 @@ volumetric_fog_temporal_reprojection_amount = 0.99
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_adbfj"]
 
-[sub_resource type="Animation" id="Animation_rvpy5"]
-resource_name = "cam_anim"
-length = 20.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.238285, 2.80588, 3.68749), Vector3(-1.37523, 2.80588, 2.27868), Vector3(-0.924163, 2.82323, 2.0206), Vector3(-0.485857, 2.56589, 1.57344), Vector3(-0.17274, 2.56589, 1.57344), Vector3(-0.107495, 2.56589, 1.45115), Vector3(0.0674353, 2.56847, 1.29981), Vector3(0.236989, 2.56847, 1.29981), Vector3(0.277513, 2.56847, 1.29981), Vector3(0.35035, 2.56847, 1.31917), Vector3(0.531349, 2.56847, 1.30258), Vector3(0.753133, 2.62551, 1.64742)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.061063, -0.152525, 0.0175601), Vector3(-0.231338, 0.106555, -0.12635), Vector3(-0.502669, -0.619912, 0.0650735), Vector3(-0.916004, 0.353192, -0.110483), Vector3(-0.916004, 1.32552, -0.110483), Vector3(-0.916004, -0.724479, -0.110483), Vector3(-0.916004, 0.293973, -0.110483), Vector3(-0.916004, 0.918522, -0.110483), Vector3(-0.916004, 0.918522, -0.110483), Vector3(-0.916004, -0.263747, -0.110483), Vector3(-0.916004, 0.38103, -0.110483), Vector3(-1.11925, -0.495712, -0.262642)]
-}
-
 [sub_resource type="Animation" id="Animation_l5goc"]
 length = 0.001
 tracks/0/type = "value"
@@ -149,6 +121,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.061063, -0.152525, 0.0175601)]
+}
+
+[sub_resource type="Animation" id="Animation_rvpy5"]
+resource_name = "cam_anim"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.238285, 2.80588, 3.68749), Vector3(-1.37523, 2.80588, 2.27868), Vector3(-0.924163, 2.82323, 2.0206), Vector3(-0.485857, 2.56589, 1.57344), Vector3(-0.17274, 2.56589, 1.57344), Vector3(-0.107495, 2.56589, 1.45115), Vector3(0.0674353, 2.56847, 1.29981), Vector3(0.236989, 2.56847, 1.29981), Vector3(0.277513, 2.56847, 1.29981), Vector3(0.35035, 2.56847, 1.31917), Vector3(0.531349, 2.56847, 1.30258), Vector3(0.834732, 2.62379, 1.48672)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.061063, -0.152525, 0.0175601), Vector3(-0.231338, 0.106555, -0.12635), Vector3(-0.502669, -0.619912, 0.0650735), Vector3(-0.916004, 0.353192, -0.110483), Vector3(-0.916004, 1.32552, -0.110483), Vector3(-0.916004, -0.724479, -0.110483), Vector3(-0.916004, 0.293973, -0.110483), Vector3(-0.916004, 0.918522, -0.110483), Vector3(-0.916004, 0.918522, -0.110483), Vector3(-0.916004, -0.263747, -0.110483), Vector3(-0.916004, 0.38103, -0.110483), Vector3(-1.48578, 1.56968, -2.36334)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fx25l"]
@@ -362,7 +362,7 @@ light_energy = 0.09
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.988401, -0.00808504, -0.151651, 0.0175265, 0.997982, 0.061025, 0.150851, -0.0629751, 0.986549, -0.238285, 2.80588, 3.68749)
+transform = Transform3D(0.988401, -0.00808498, -0.151651, 0.0175265, 0.997982, 0.061025, 0.150852, -0.0629751, 0.986548, -0.238285, 2.80588, 3.68749)
 attributes = SubResource("CameraAttributesPractical_adbfj")
 
 [node name="gear_wheel" parent="." instance=ExtResource("19_rmaw4")]
